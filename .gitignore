@@ -12,7 +12,7 @@ npm-debug.log
 yarn-error.log
 
 # IDEs and editors
-pwa-interest/.vscode/
+.vscode/
 .idea/
 .project
 .classpath
