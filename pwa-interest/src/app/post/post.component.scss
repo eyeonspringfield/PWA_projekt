@@ -1,0 +1,15 @@
+.postcontainer{
+    background: transparent !important;
+    
+
+}
+
+:host ::ng-deep .mat-chip {
+    color: #ff5722 !important;  // Replace with your desired color
+    background-color: #f0f0f0;  // Optional: Change background color
+}
+
+img{
+    border-radius: 15px;
+    padding: 5px;
+}

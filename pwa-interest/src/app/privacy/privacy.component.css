@@ -1,0 +1,16 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#container #privacy {
+  width: 40%;
+  display: flex;
+}
+#container #privacy #text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/*# sourceMappingURL=privacy.component.css.map */

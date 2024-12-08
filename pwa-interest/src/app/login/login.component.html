@@ -1,0 +1,27 @@
+<div id="container">
+  <div id="login">
+    <p>Bejelentkezés</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Felhasználónév</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Jelszó</mat-label>
+      <input type="password" matInput>
+    </mat-form-field>
+
+    <button mat-flat-button>Bejelentkezés</button>
+
+    <div id="links">
+      <a routerLink="/privacy">Adatvédelmi tájékoztató</a>
+      <fa-icon [icon]="faCircle"></fa-icon>
+      <a routerLink="/terms">Felhasználási feltételek</a>
+      <fa-icon [icon]="faCircle"></fa-icon>
+      <a routerLink="/connect">Kapcsolat</a>
+    </div>
+
+  </div>
+
+</div>

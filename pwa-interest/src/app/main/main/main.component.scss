@@ -1,0 +1,16 @@
+
+#welcome {
+    padding-top: 20px;
+    transition: background-color 0.5s ease;
+    text-align: center; 
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Fill available space */
+    gap: 20px; /* Space between grid items */
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto; /* Center grid container */
+}

@@ -1,0 +1,17 @@
+<mat-card appearance="raised" class="postcontainer">
+
+        <img mat-card ngSrc="https://loremflickr.com/350/750/cat" alt="placeholder image" height="350" width="750">
+        <mat-card-content>
+            <a>Lorem Ipsum</a>
+        </mat-card-content>
+        <mat-chip-set>
+            @for(tag of tags; track $index){
+                <mat-chip color="primary">{{ tag }}</mat-chip>
+            }
+        </mat-chip-set>
+        <mat-card-actions>
+            <button mat-flat-button color="primary">Like</button>
+            <button mat-flat-button color="accent">Download</button>
+        </mat-card-actions>
+
+    </mat-card>
