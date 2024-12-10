@@ -2,10 +2,22 @@
   background: #f4f4f4;
   align-items: center;
   margin: 20px;
+  position: relative;
+}
+.postcontainer .delete-button-wrapper {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+.postcontainer mat-chip-set {
+  margin: 5px;
 }
 .postcontainer mat-chip {
-  background: black !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.postcontainer mat-chip:hover {
+  cursor: pointer;
 }
 .postcontainer img {
   margin-top: 15px;
@@ -22,6 +34,13 @@
 }
 .postcontainer mat-card-actions button {
   margin: 5px;
+}
+.postcontainer .image-loading-indicator {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .image-modal {

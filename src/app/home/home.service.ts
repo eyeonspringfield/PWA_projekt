@@ -10,9 +10,9 @@ export class HomeService {
   async getAllDocuments(collectionName: string) {
     const colRef = collection(this.firestore, collectionName);
     const q = query(colRef, orderBy('createdAt', 'desc'));
-    const snapshot = await getDocs(q); // Get documents from the collection
+    const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => {
-      return {id: doc.id, ...doc.data()}; // Extracting the document id and data
+      return {id: doc.id, ...doc.data()};
     });
   }
 }

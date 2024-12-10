@@ -1,3 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -7,6 +18,31 @@ mat-toolbar {
   justify-content: space-between;
   position: fixed;
   z-index: 99;
+}
+mat-toolbar button {
+  margin: 0 5px;
+}
+mat-toolbar .active {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+mat-toolbar .animate-like {
+  animation: bounce 1s ease;
+}
+mat-toolbar .animate-download {
+  animation: bounce 1s ease;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-5px);
+    background-color: purple;
+  }
 }
 
 /*# sourceMappingURL=navbar.component.css.map */

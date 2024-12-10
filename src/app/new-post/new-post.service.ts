@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, Firestore, getDoc, Timestamp} from '@angular/fire/firestore';
+import {addDoc, collection, Firestore, getDoc, getDocs, Timestamp} from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewPostService {
+  private tags: string[] = [];
 
   constructor(private readonly firestore: Firestore) {}
 
-  public loadCategories(){
-    return ['Technology', 'Sports', 'Entertainment', 'Politics', 'Business', 'Science', 'Health', 'Travel', 'Food', 'Fashion', 'Lifestyle', 'Sci-Tech', 'Gaming', 'Nature', 'Music', 'Movies', 'TV', 'News', 'Other'];
+  public async loadCategories() {
+    const colRef = collection(this.firestore, "categories");
+    const snapshot = await getDocs(colRef);
+    return snapshot.docs.map(doc => doc.data()['name'] || "");
+  }
+
+  public async updateCategories(name: string) {
+    const docRef = await addDoc(collection(this.firestore, "categories"), {
+      name: name,
+      createdAt: Timestamp.now()
+    })
   }
 
   public async addPost() {

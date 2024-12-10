@@ -1,6 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject, model, signal} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
+import {
+  MatAutocomplete,
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteTrigger,
+  MatOption
+} from '@angular/material/autocomplete';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
@@ -11,6 +16,10 @@ import {v4 as uuidv4} from 'uuid';
 import {NgIf} from '@angular/common';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {addDoc, collection, Firestore, Timestamp} from '@angular/fire/firestore';
+import {MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow} from '@angular/material/chips';
+import {MatIcon} from '@angular/material/icon';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-new-post',
@@ -27,25 +36,67 @@ import {addDoc, collection, Firestore, Timestamp} from '@angular/fire/firestore'
     NgIf,
     MatProgressSpinner,
     FormsModule,
-    MatLabel
+    MatLabel,
+    MatChipGrid,
+    MatChipInput,
+    MatChipRemove,
+    MatChipRow,
+    MatIcon
   ],
   templateUrl: './new-post.component.html',
   standalone: true,
   styleUrl: './new-post.component.scss'
 })
 export class NewPostComponent {
-  options: string[] = []; //TODO getOptionsFromDB
-  myControl = new FormControl('');
   titleControl = new FormControl('');
   uploadedFileName: string = "";
   protected fileURL: string = "";
   isLoading: boolean = false;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  readonly currentTag = model('');
+  readonly tags = signal(['Egyetem']);
+  private allTags: string[] = [];
+  readonly filteredTags = computed(() => {
+    const currentTag = this.currentTag().toLowerCase();
+    return currentTag
+      ? this.allTags.filter(tag => tag.toLowerCase().includes(currentTag))
+      : this.allTags.slice();
+  });
+
+  readonly announcer = inject(LiveAnnouncer);
 
   constructor(private readonly newPostService: NewPostService, private readonly firestore: Firestore, private readonly router: Router) {
   }
 
-  ngOnInit() {
-    this.options = this.newPostService.loadCategories();
+  async ngOnInit() {
+    this.allTags = await this.newPostService.loadCategories();
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.tags.update(tags => [...tags, value]);
+    }
+    this.currentTag.set('');
+  }
+
+  remove(tag: string): void {
+    this.tags.update(tags => {
+      const index = tags.indexOf(tag);
+      if (index < 0) {
+        return tags;
+      }
+
+      tags.splice(index, 1);
+      this.announcer.announce(`Removed ${tag}`);
+      return [...tags];
+    });
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.update(tags => [...tags, event.option.viewValue]);
+    this.currentTag.set('');
+    event.option.deselect();
   }
 
   async onSave() {
@@ -54,8 +105,15 @@ export class NewPostComponent {
         title: this.titleControl.value,
         createdAt: Timestamp.now(),
         content: this.fileURL,
-        tags: ["szia", "tesztelek"],
+        tags: this.tags(),
       });
+
+      for (const tag of this.tags()) {
+        if(!this.allTags.includes(tag)) {
+          await this.newPostService.updateCategories(tag);
+        }
+      }
+
       console.log("Document written with ID: ", docRef.id);
       await this.router.navigateByUrl("/home");
     } catch (e) {

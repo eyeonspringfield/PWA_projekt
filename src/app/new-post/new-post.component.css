@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/magenta-violet.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 html, body {
   height: 100%;
 }
@@ -13,9 +13,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100vh;
 }
 #container #new-post-container {
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,8 +27,20 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+#container #new-post-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#container #new-post-container * {
+  width: 100%;
+}
+#container #new-post-container mat-chip-row {
+  width: initial;
+}
 #container #new-post-container #uploaded-pic {
-  width: 300px;
+  width: 250px;
+  margin: 0 auto;
 }
 #container #new-post-container button {
   margin: 5px;

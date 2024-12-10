@@ -18,17 +18,31 @@
 
       <br>
 
-      <mat-form-field>
-        <input type="text"
-               placeholder="Tagek"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-
-        <mat-autocomplete #auto="matAutocomplete">
-          @for (option of options; track option) {
-            <mat-option [value]="option">{{ option }}</mat-option>
+      <mat-form-field class="chip-list">
+        <mat-label>Tagek</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Tag selection">
+          @for (tag of tags(); track $index) {
+            <mat-chip-row (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          }
+        </mat-chip-grid>
+        <input
+          name="currentFruit"
+          placeholder="Tag hozzáadása..."
+          #fruitInput
+          [(ngModel)]="currentTag"
+          [matChipInputFor]="chipGrid"
+          [matAutocomplete]="auto"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)"
+        />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          @for (tag of filteredTags(); track tag) {
+            <mat-option [value]="tag">{{tag}}</mat-option>
           }
         </mat-autocomplete>
       </mat-form-field>

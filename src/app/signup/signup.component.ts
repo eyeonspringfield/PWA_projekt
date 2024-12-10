@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {addDoc, collection, Firestore} from '@angular/fire/firestore';
 import {from} from 'rxjs';
+import {Auth, createUserWithEmailAndPassword, getAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +26,7 @@ export class SignupComponent {
   ngOnInit() {
     console.log("Signup component loaded");
   }
-
+  auth = inject(Auth);
   private firestore = inject(Firestore);
 
   username: string = '';
@@ -40,6 +41,26 @@ export class SignupComponent {
     if (this.password !== this.confirmPassword) {
       //TODO bad password dialogue thing
       return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, this.email, this.password);
+
+      const user = userCredential.user;
+
+      await addDoc(collection(this.firestore, 'users'), {
+        uid: user.uid,
+        username: this.username,
+        email: this.email,
+        createdAt: new Date(),
+      });
+
+      console.log('User registered successfully:', user);
+      await this.router.navigateByUrl("/home");
+
+    } catch (error: any) {
+      console.error('Error during signup:', error.message);
+      alert('Error during signup: ' + error.message);
     }
   }
 }
