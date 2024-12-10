@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/magenta-violet.css';
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+#container #new-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+#container #new-post-container #uploaded-pic {
+  width: 300px;
+}
+#container #new-post-container button {
+  margin: 5px;
+}
+
+/*# sourceMappingURL=new-post.component.css.map */

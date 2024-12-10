@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["privacy.component.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;;AACA;EACE;EACA","file":"privacy.component.css"}
+{"version":3,"sourceRoot":"","sources":["../../styles.scss"],"names":[],"mappings":"AAAA;AAEQ;AA2BR;EAAa;;;AACb;EAAO;EAAW;;;AAxBd;EACA;EACA;EACA;EACA;;AAEE;EACA;EACA;EACA;;AAEE;EACA;EACA","file":"privacy.component.css"}

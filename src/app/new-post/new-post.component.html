@@ -1,0 +1,43 @@
+<div id="container">
+  <div id="new-post-container">
+    <p>Új bejegyzés létrehozása</p>
+    <form>
+      <mat-form-field>
+        <mat-label>Szöveg</mat-label>
+        <input matInput type="text" [formControl]="titleControl">
+      </mat-form-field>
+
+      <br>
+
+      <input type="file" (change)="uploadFile($event)"/><br/>
+      <img id="uploaded-pic" [src]="fileURL" *ngIf="fileURL"/>
+
+      <div *ngIf="isLoading" class="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <br>
+
+      <mat-form-field>
+        <input type="text"
+               placeholder="Tagek"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of options; track option) {
+            <mat-option [value]="option">{{ option }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </form>
+
+    <div id="buttons">
+      <button mat-flat-button (click)="onSave()">Közzététel</button>
+      <button mat-button color="secondary" routerLink="/home">Mégse</button>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import {NgOptimizedImage} from '@angular/common';
   styleUrl: './post.component.scss'
 })
 export class PostComponent {
+  @Input() post: any;
   @Input() tags: Array<string> = [];
 
 

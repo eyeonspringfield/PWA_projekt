@@ -1,0 +1,18 @@
+#posts-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  #posts{
+    width: 50%;
+    margin-top: 80px;
+  }
+}
+
+#add{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+}

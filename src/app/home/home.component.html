@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div id="posts-container">
+  <div id="posts">
+
+    <app-post *ngFor="let post of this.posts" [post]="post"></app-post>
+
+  </div>
+</div>
+
+  <button id="add" mat-fab routerLink="/add">
+    <mat-icon>add</mat-icon>
+  </button>
+

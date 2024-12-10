@@ -5,6 +5,8 @@
 mat-toolbar {
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  z-index: 99;
 }
 
 /*# sourceMappingURL=navbar.component.css.map */

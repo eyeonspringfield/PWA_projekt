@@ -16,27 +16,4 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 })
 export class MainComponent {
 
-  posts = [
-    { tags: ["calculus", "computer science"] },
-    { tags: ["math", "physics"] },
-    { tags: ["discrete maths", "computer science"] },
-    { tags: ["math", "chemistry"] },
-    { tags: ["literature", "flash cards"] },
-    { tags: ["biology", "medicine", "cheat sheet"] },
-    { tags: ["discrete maths", "permutations", "problems"] },
-    { tags: ["university"] },
-    { tags: ["programming", "c language", "pointers", "cheat sheet"] },
-    { tags: ["math", "integration"] },
-    { tags: ["calculus", "computer science"] },
-    { tags: ["math", "physics"] },
-    { tags: ["discrete maths", "computer science"] },
-    { tags: ["math", "chemistry"] },
-    { tags: ["literature", "flash cards"] },
-    { tags: ["biology", "medicine", "cheat sheet"] },
-    { tags: ["discrete maths", "permutations", "problems"] },
-    { tags: ["university"] },
-    { tags: ["programming", "c language", "pointers", "cheat sheet"] },
-    { tags: ["math", "integration"] },
-  ];
-
 }

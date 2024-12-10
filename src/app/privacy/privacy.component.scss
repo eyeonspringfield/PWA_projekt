@@ -1,14 +1,3 @@
-#container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  #privacy{
-    width: 40%;
-    display: flex;
-    #text{
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  }
-}
+@use "../../styles";
+
+@include styles.formatLegal(#container, #privacy, #text);
