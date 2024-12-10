@@ -38,6 +38,7 @@ export class HomeComponent {
     try {
       this.posts = await this.homeService.getAllDocuments('posts');
       console.log(this.posts);
+      console.log(this.posts[0].id);
     } catch (error) {
       console.error('Error loading documents:', error);
     }

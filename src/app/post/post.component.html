@@ -1,5 +1,6 @@
 <mat-card class="postcontainer">
-  <img mat-card src="{{post.content || 'https://loremflickr.com/350/750/cat'}}" alt="post content" height="350" width="750">
+  <img mat-card src="{{post.content || 'https://loremflickr.com/350/750/cat'}}" alt="post content" height="350" width="750"
+  (click)="viewFullImage(post.content)">
   <mat-card-content>
     <a>{{ post.title || "Lorem ipsum" }}</a>
   </mat-card-content>
@@ -9,8 +10,14 @@
     }
   </mat-chip-set>
   <mat-card-actions>
-    <button mat-flat-button color="primary">Like</button>
+    <button mat-flat-button color="primary" (click)="onLikeButtonClicked(post)">
+      {{ isLiked ? 'Like törlése' : 'Like' }}
+    </button>
     <button mat-flat-button color="accent">Letötlés</button>
   </mat-card-actions>
 
 </mat-card>
+
+<div *ngIf="showFullImage" class="image-modal" (click)="closeModal()">
+  <img [src]="fullImageUrl" alt="Full Image" />
+</div>

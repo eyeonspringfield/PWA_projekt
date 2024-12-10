@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collection, Firestore} from '@angular/fire/firestore';
+import {addDoc, collection, Firestore, getDoc, Timestamp} from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class NewPostService {
     try {
       const docRef = await addDoc(collection(this.firestore, "posts"), {
         title: "fasz",
+        createdAt: Timestamp.now(),
         content: "valamikontent/link.png",
         tags: ["szia", "tesztelek"],
       });

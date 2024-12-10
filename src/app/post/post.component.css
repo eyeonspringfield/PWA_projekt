@@ -8,12 +8,38 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .postcontainer img {
+  margin-top: 15px;
   max-width: 95%;
+  max-height: 95%;
+  object-fit: cover;
+  image-rendering: optimizeQuality;
   border-radius: 15px;
-  padding: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.postcontainer img:hover {
+  cursor: pointer;
 }
 .postcontainer mat-card-actions button {
   margin: 5px;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=post.component.css.map */

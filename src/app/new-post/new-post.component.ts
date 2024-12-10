@@ -10,7 +10,7 @@ import {finalize} from 'rxjs';
 import {v4 as uuidv4} from 'uuid';
 import {NgIf} from '@angular/common';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import {addDoc, collection, Firestore} from '@angular/fire/firestore';
+import {addDoc, collection, Firestore, Timestamp} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-new-post',
@@ -52,6 +52,7 @@ export class NewPostComponent {
     try {
       const docRef = await addDoc(collection(this.firestore, "posts"), {
         title: this.titleControl.value,
+        createdAt: Timestamp.now(),
         content: this.fileURL,
         tags: ["szia", "tesztelek"],
       });
