@@ -14,6 +14,7 @@ export const routes: Routes = [
   {path: 'login', loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)},
   {path: 'register', loadComponent: () => import('./signup/signup.component').then(c => c.SignupComponent)},
   {path: 'home', loadComponent: () => import('./home/home.component').then(c => c.HomeComponent)},
+  {path: 'likes', loadComponent: () => import('./likes/likes.component').then(c => c.LikesComponent)},
   {path: 'privacy', loadComponent: () => import('./privacy/privacy.component').then(c => c.PrivacyComponent)},
   {path: 'terms', loadComponent: () => import('./terms/terms.component').then(c => c.TermsComponent)},
   {path: 'add', loadComponent: () => import('./new-post/new-post.component').then(c => c.NewPostComponent)},

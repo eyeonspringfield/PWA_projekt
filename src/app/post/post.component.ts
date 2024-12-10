@@ -15,7 +15,6 @@ export class PostComponent {
   @Input() post: any;
   @Input() tags: Array<string> = [];
   isLiked: boolean = false;
-  likedPosts: any[] = [];
   showFullImage: any;
   fullImageUrl: any;
 
@@ -23,23 +22,22 @@ export class PostComponent {
   constructor() {}
 
   ngOnInit() {
-    this.likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
-    this.isLiked = this.likedPosts.includes(this.post.id);
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+    this.isLiked = likedPosts.includes(this.post.id);
   }
 
   onLikeButtonClicked(post: any){
-
-    if (!this.likedPosts.includes(post.id)) {
-      this.likedPosts.push(post.id);
-      localStorage.setItem('likedPosts', JSON.stringify(this.likedPosts));
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+    if (!likedPosts.includes(post.id)) {
+      likedPosts.push(post.id);
       console.log("Post liked: " + post.id);
       this.isLiked = true;
     } else {
-      this.likedPosts = this.likedPosts.filter(p => p !== post.id);
-      localStorage.setItem('likedPosts', JSON.stringify(this.likedPosts));
+      likedPosts = likedPosts.filter((p: any) => p !== post.id);
       console.log("Post unliked: " + post.id);
       this.isLiked = false;
     }
+    localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
   }
 
   viewFullImage(imageUrl: string) {

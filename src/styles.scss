@@ -23,6 +23,20 @@
   }
 }
 
+@mixin formatPosts($sel...){
+  #{list.nth($sel, 1)}{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #{list.nth($sel, 2)}{
+      width: 50%;
+      margin-top: 80px;
+    }
+  }
+}
+
 $container-color: #f4f4f4;
 $container-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
