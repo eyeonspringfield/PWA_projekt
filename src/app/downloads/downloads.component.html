@@ -1,0 +1,8 @@
+<div id="posts-container">
+  <div id="posts">
+
+    <app-post *ngFor="let post of this.posts" [post]="post" (deletePost)="onPostDeleted($event)"></app-post>
+
+  </div>
+</div>
+
