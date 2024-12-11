@@ -1,0 +1,35 @@
+<div id="container">
+  <div id="signup">
+    <p>Regisztráció</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Felhasználónév</mat-label>
+      <input matInput [(ngModel)]="username" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email cím</mat-label>
+      <input matInput [(ngModel)]="email" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Jelszó</mat-label>
+      <input type="password" [(ngModel)]="password" matInput [required]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Jelszó újra</mat-label>
+      <input type="password" [(ngModel)]="confirmPassword" matInput [required]="true">
+    </mat-form-field>
+
+    <div id="buttons">
+      <button mat-flat-button (click)="onSignup()">Regisztrálás</button>
+    </div>
+
+    <div id="links">
+      <a routerLink="/privacy">Adatvédelmi tájékoztató</a>
+      <fa-icon [icon]="faCircle"></fa-icon>
+      <a routerLink="/terms">Felhasználási feltételek</a>
+    </div>
+  </div>
+</div>

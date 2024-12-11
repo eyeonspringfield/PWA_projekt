@@ -1,0 +1,11 @@
+@use '../../../styles';
+
+@include styles.formatPosts(#posts-container, #posts);
+
+mat-form-field {
+  margin-top: 100px;
+}
+
+#posts{
+  margin-top: 0 !important;
+}

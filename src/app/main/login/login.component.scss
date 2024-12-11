@@ -1,0 +1,13 @@
+@use '../../../styles';
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin: 0;
+
+  @include styles.formatAuth(#login);
+}
+
+

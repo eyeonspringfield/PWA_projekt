@@ -1,0 +1,64 @@
+.postcontainer {
+  background: #f4f4f4;
+  align-items: center;
+  margin: 20px;
+  position: relative;
+}
+.postcontainer .delete-button-wrapper {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10;
+}
+.postcontainer mat-chip-set {
+  margin: 5px;
+}
+.postcontainer mat-chip {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.postcontainer mat-chip:hover {
+  cursor: pointer;
+}
+.postcontainer img {
+  margin-top: 15px;
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: cover;
+  image-rendering: optimizeQuality;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.postcontainer img:hover {
+  cursor: pointer;
+}
+.postcontainer mat-card-actions button {
+  margin: 5px;
+}
+.postcontainer .image-loading-indicator {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/*# sourceMappingURL=post.component.css.map */

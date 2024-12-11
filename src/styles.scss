@@ -33,6 +33,43 @@
     #{list.nth($sel, 2)}{
       width: 50%;
       margin-top: 80px;
+      @media(max-width: 780px){
+        width: 80%;
+      }
+    }
+  }
+}
+
+@mixin formatAuth($sel){
+  #{$sel} {
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding: 10px;
+    border-radius: 10px;
+
+    @media(max-width: 780px){
+      width: 60%;
+    }
+
+    #links {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      a {
+        margin: 5px;
+        font-size: 12px;
+      }
+
+      fa-icon {
+        font-size: 7px;
+      }
     }
   }
 }

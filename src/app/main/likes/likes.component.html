@@ -1,0 +1,16 @@
+<div id="posts-container">
+  <div id="posts">
+
+    <app-post *ngFor="let post of this.posts" [post]="post"></app-post>
+
+  </div>
+
+  <div *ngIf="!isOnline" id="offlineContainer">
+    <p>Nincs internetkapcsolatod! Kattints az alábbi gombra, hogy megtekintsd letöltéseid.</p>
+    <button id="offline" mat-fab routerLink="/downloads">
+      <mat-icon>cloud_download</mat-icon>
+    </button>
+  </div>
+</div>
+
+
